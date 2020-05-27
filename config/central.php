@@ -105,5 +105,10 @@ return [
         0 => 'Submitted',
         1 => 'Accepted',
         2 => 'Rejected'
+    ],
+
+    'status_mahasiswa_kp' => [
+        1 => 'Sedang Dijalankan',
+        2 => 'Selesai'
     ]
 ];

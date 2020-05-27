@@ -22,7 +22,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = Student::paginate(25);
+        $students = Student::paginate(5);
         return view('backends.students.index', compact('students'));
     }
 
