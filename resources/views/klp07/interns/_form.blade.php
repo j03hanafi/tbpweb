@@ -124,92 +124,105 @@
 <div class="form-group">
   <div class="row">
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
       <div class="form-label" for="file_report_receipt">File Report Receipt</div>
 
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
       <div class="form-label" for="file_field_grade">File Field Grade</div>
 
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
       <div class="form-label" for="file_logbook">File Logbook</div>
 
     </div>
-    
-    <div class="col-md-2">
-    
-      <div class="form-label" for="file_seminar_attendance">File Seminar Attendance</div>
 
-    </div>
-    
-    <div class="col-md-2">
-    
-      <div class="form-label" for="file_seminar_off_report">File Seminar Off Report</div>
-
-    </div>
-    
-    <div class="col-md-2">
-    
-      <div class="form-label" for="file_certificate">File Certificate</div>
-
-    </div>
   </div>
+
   <div class="row">
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
-      {{ html()->text('file_report_receipt')->value($edit->file_report_receipt)->class(["form-control", "is-invalid" => $errors->has('file_report_receipt')])->id('file_report_receipt')->placeholder('File Report Receipt') }}
+      {{ html()->file('file_report_receipt')->class(["form-control-file", "is-invalid" => $errors->has('file_report_receipt')])->id('file_report_receipt') }}
       @error('file_report_receipt')
       <div class="invalid-feedback">{{ $errors->first('file_report_receipt') }}</div>
       @enderror
 
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
-      {{ html()->text('file_field_grade')->value($edit->file_field_grade)->class(["form-control", "is-invalid" => $errors->has('file_field_grade')])->id('file_field_grade')->placeholder('File Field Grade') }}
+      {{ html()->file('file_field_grade')->class(["form-control-file", "is-invalid" => $errors->has('file_field_grade')])->id('file_field_grade') }}
       @error('file_field_grade')
       <div class="invalid-feedback">{{ $errors->first('file_field_grade') }}</div>
       @enderror
 
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
-      {{ html()->text('file_logbook')->value($edit->file_logbook)->class(["form-control", "is-invalid" => $errors->has('file_logbook')])->id('file_logbook')->placeholder('File Logbook') }}
+      {{ html()->file('file_logbook')->class(["form-control-file", "is-invalid" => $errors->has('file_logbook')])->id('file_logbook') }}
       @error('file_logbook')
       <div class="invalid-feedback">{{ $errors->first('file_logbook') }}</div>
       @enderror
 
     </div>
+
+  </div>
+
+</div>
+
+<div class="form-group">
+
+  <div class="row">
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
-      {{ html()->text('file_seminar_attendance')->value($edit->file_seminar_attendance)->class(["form-control", "is-invalid" => $errors->has('file_seminar_attendance')])->id('file_seminar_attendance')->placeholder('File Seminar Attendance') }}
+      <div class="form-label" for="file_seminar_attendance">File Seminar Attendance</div>
+
+    </div>
+    
+    <div class="col-md-4">
+    
+      <div class="form-label" for="file_seminar_off_report">File Seminar Off Report</div>
+
+    </div>
+    
+    <div class="col-md-4">
+    
+      <div class="form-label" for="file_certificate">File Certificate</div>
+
+    </div>
+  </div>
+  
+  <div class="row">
+    
+    <div class="col-md-4">
+    
+      {{ html()->file('file_seminar_attendance')->class(["form-control-file", "is-invalid" => $errors->has('file_seminar_attendance')])->id('file_seminar_attendance') }}
       @error('file_seminar_attendance')
       <div class="invalid-feedback">{{ $errors->first('file_seminar_attendance') }}</div>
       @enderror
 
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
-      {{ html()->text('file_seminar_off_report')->value($edit->field_advisor_email)->class(["form-control", "is-invalid" => $errors->has('file_seminar_off_report')])->id('file_seminar_off_report')->placeholder('File Seminar Off Report') }}
+      {{ html()->file('file_seminar_off_report')->class(["form-control-file", "is-invalid" => $errors->has('file_seminar_off_report')])->id('file_seminar_off_report') }}
       @error('file_seminar_off_report')
       <div class="invalid-feedback">{{ $errors->first('file_seminar_off_report') }}</div>
       @enderror
 
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
     
-      {{ html()->text('file_certificate')->value($edit->file_certificate)->class(["form-control", "is-invalid" => $errors->has('file_certificate')])->id('file_certificate')->placeholder('File Certificate') }}
+      {{ html()->file('file_certificate')->class(["form-control-file", "is-invalid" => $errors->has('file_certificate')])->id('file_certificate') }}
       @error('file_certificate')
       <div class="invalid-feedback">{{ $errors->first('file_certificate') }}</div>
       @enderror
