@@ -23,7 +23,14 @@ return [
         'lecturer_photo' => 'photo/lecturer',
         'student_photo' => 'photo/student',
         'ijazah' => 'ijazah',
-        'thesis_logbook_file_progress' => 'logbook/thesis'
+        'thesis_logbook_file_progress' => 'logbook/thesis',
+        'file_report_receipt' => 'public/interns/file_report_receipt',
+        'file_field_grade' => 'public/interns/file_field_grade',
+        'file_logbook' => 'public/interns/file_logbook',
+        'file_seminar_attendance' => 'public/interns/file_seminar_attendance',
+        'file_seminar_off_report' => 'public/interns/file_seminar_off_report',
+        'file_certificate' => 'public/interns/file_certificate'
+
     ],
 
     'position' => [
@@ -105,5 +112,10 @@ return [
         0 => 'Submitted',
         1 => 'Accepted',
         2 => 'Rejected'
+    ],
+
+    'status_mahasiswa_kp' => [
+        1 => 'Sedang Dijalankan',
+        2 => 'Selesai'
     ]
 ];
