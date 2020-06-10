@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Backend\Intern;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Internship;
+use App\Models\Student;
+use App\Models\InternshipAudience;
+use Illuminate\Support\Facades\URL;
 
 class InternshipSeminarAudienceController extends Controller
 {
@@ -24,7 +28,12 @@ class InternshipSeminarAudienceController extends Controller
      */
     public function create()
     {
-        //
+        $url_current = URL::current();
+        $url = explode('/', $url_current, -2);
+
+        $student = Student::select('students.id', 'name')->leftJoin('internship_audiences', 'students.id', '=', 'internship_audiences.student_id')->whereNull('internship_audiences.student_id')->get();
+
+        return view('klp07.intern-seminars.create', compact('url', 'student'));
     }
 
     /**
@@ -35,7 +44,14 @@ class InternshipSeminarAudienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        InternshipAudience::insertGetId([
+            'internship_id' => $request->internship_id,
+            'student_id' => $request->student_id
+        ]);
+
+        notify('success', 'Berhasil memperbaharui data');
+        return redirect()->route('backend.intern-seminars.show', [$request->internship_id]);
     }
 
     /**

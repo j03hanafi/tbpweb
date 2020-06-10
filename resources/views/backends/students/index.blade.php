@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <table class="{{ config('style.table') }}">
+                    <table class="{{ config('style.table') }} tb-mahasiswa-kp">
                         <thead class="{{ config('style.thead') }}">
                         <tr>
                             <th class="text-center"><i class="cil-people"></i> </th>
