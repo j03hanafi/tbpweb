@@ -29,8 +29,12 @@
                                 <strong><i class="cil-filter text-right"></i> Status</strong>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=1">Sedang Dijalankan</a>
-                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=2">Selesai</a>
+                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=1">Pengajuan Proposal</a>
+                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=2">Sedang KP</a>
+                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=3">Bimbingan KP</a>
+                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=4">Seminar KP</a>
+                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=5">Selesai KP</a>
+                                <a class="dropdown-item" href="{{ route('backend.interns.index') }}?status=6">Batal/Gagal</a>
                                 <a class="dropdown-item" href="{{ route('backend.interns.index') }}">Reset</a>
                             </div>
                         </div>
@@ -57,7 +61,7 @@
                             <th class="text-center">Nama Perusahaan</th>
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Status</th>
-                            <th class="text-center">Aksi</th>
+                            <th class="text-center">Detail</th>
                         </tr>
                     </thead>
 
@@ -72,7 +76,7 @@
                             <td class="text-center">{{ $internship->start_at }} s/d <br>{{ $internship->end_at }}</td>
                             <td class="text-center">{{ $status_mahasiswa_kp[$internship->status] }}</td>
                             <td class="text-center">
-                            <a class="btn btn-outline-primary" href="{{ route('backend.interns.show',['intern' => $internship->id]) }}" role="button"><i class="cil-list"></i> Detail</a>
+                            <a class="btn btn-outline-primary" href="{{ route('backend.interns.show',['intern' => $internship->id]) }}" role="button"><i class="cil-zoom"></i></a>
                             </td>
                         </tr>
                         @empty

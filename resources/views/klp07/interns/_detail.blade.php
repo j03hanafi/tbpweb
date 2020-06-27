@@ -40,9 +40,9 @@
   </div>
 </div>
 
-<!-- Nama Pekerjaan -->
+<!-- Judul KP -->
 <div class="form-group">
-  <div class="form-label">Nama Pekerjaan</div>
+  <div class="form-label">Judul KP</div>
   <div>{{ $detail->title }}</div>
 </div>
 
@@ -71,6 +71,12 @@
 </div>
 
 <!-- Nilai -->
+<div class="form-group">
+  <div class="form-label">Nilai</div>
+  <div>{{ $detail->grade }}</div>
+</div>
+
+<!-- Seminar -->
 <div class="form-group">
   <div class="form-label">Nilai</div>
   <div>{{ $detail->grade }}</div>

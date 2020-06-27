@@ -115,7 +115,11 @@ return [
     ],
 
     'status_mahasiswa_kp' => [
-        1 => 'Sedang Dijalankan',
-        2 => 'Selesai'
+        1 => 'Pengajuan Proposal',
+        2 => 'Sedang KP',
+        3 => 'Bimbingan KP',
+        4 => 'Seminar KP',
+        5 => 'Selesai KP',
+        6 => 'Batal/Gagal'
     ]
 ];
