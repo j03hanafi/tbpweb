@@ -36,4 +36,9 @@ class Internship extends Model
     {
         return $this->belongsTo(Room::class, 'seminar_room_id', 'id');
     }
+
+    public function advisor()
+    {
+        return $this->belongsTo(Lecturer::class, 'advisor_id', 'id');
+    }
 }

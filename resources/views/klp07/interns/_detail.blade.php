@@ -49,6 +49,22 @@
 <!-- Nama Pembimbing -->
 <div class="form-group">
   <div class="form-label">Pembimbing</div>
+  @if(empty($detail->advisor_id))
+  <div><p>Belum ada pembimbing</p></div>
+  @else
+  <div>{{ $detail->advisor->name }} ({{ $detail->advisor->nip }}) </div>
+  @endif
+</div>
+
+<!-- Nama Pembimbing Lapangan -->
+<div class="form-group">
+  <div class="form-label">Pembimbing Lapangan</div>
+  @if(empty($detail->field_advisor_name))
+  <div>
+    <p>Belum ada pembimbing Lapangan</p>
+  </div>
+</div>
+  @else
   <div>{{ $detail->field_advisor_name }} ({{ $detail->field_advisor_no }}) </div>
 </div>
 
@@ -57,18 +73,19 @@
   <div class="col-md-6">
 
     <div class="form-group">
-      <div class="form-label">No HP</div>
+      <div class="form-label">No HP Pembimbing Lapangan</div>
       <div>{{ $detail->field_advisor_phone }}</div>
     </div>
   </div>
 
   <div class="col-md-6">
     <div class="form-group">
-      <div class="form-label">Email</div>
+      <div class="form-label">Email Pembimbing Lapangan</div>
       <div>{{ $detail->field_advisor_email }}</div>
     </div>
   </div>
 </div>
+  @endif
 
 <!-- Nilai -->
 <div class="form-group">
@@ -76,26 +93,32 @@
   <div>{{ $detail->grade }}</div>
 </div>
 
-<!-- Seminar -->
+<!-- Ruang Seminar -->
 <div class="form-group">
-  <div class="form-label">Nilai</div>
-  <div>{{ $detail->grade }}</div>
-</div>
+  <div class="form-label">Ruang Seminar</div>
+  @if(empty($detail->seminar_room_id))
+  <div><p>Ruangan belum dipilih</p></div>
+  @else
+  <div>{{ $detail->seminar_room_id }}</div>
+  @endif
+</div> 
 
-<!-- Tanggal Buat dan Upload -->
+<!-- Informasi seminar -->
 <div class="row">
-  <div class="col-md-6">
 
+  <div class="col-md-6">
     <div class="form-group">
-      <div class="form-label">Dibuat pada tanggal</div>
-      <div>{{ $detail->created_at }}</div>
+      <div class="form-label">Tanggal Seminar</div>
+      <div>{{ $detail->seminar_date }}</div>
     </div>
   </div>
 
   <div class="col-md-6">
     <div class="form-group">
-      <div class="form-label">Diupload pada tanggal</div>
-      <div>{{ $detail->updated_at }}</div>
+      <div class="form-label">Waktu Seminar</div>
+      <div>{{ $detail->seminar_time }}</div>
     </div>
   </div>
+
+
 </div>

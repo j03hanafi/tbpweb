@@ -16,15 +16,48 @@
   <div class="form-check">
     {{ html()->radio('status')->value(1)->class(["form-check-input"])->id('status_1')->checked(old('status', $edit->status === 1)) }}
     <label class="form-check-label" for="status_1">
-      Sedang Dijalankan
+      Pengajuan Proposal
     </label>
   </div>
   <div class="form-check">
     {{ html()->radio('status')->value(2)->class(["form-check-input"])->id('status_2')->checked(old('status', $edit->status === 2)) }}
     <label class="form-check-label" for="status_2">
-      Selesai
+      Sedang KP
     </label>
   </div>
+  <div class="form-check">
+    {{ html()->radio('status')->value(3)->class(["form-check-input"])->id('status_3')->checked(old('status', $edit->status === 3)) }}
+    <label class="form-check-label" for="status_3">
+      Bimbingan KP
+    </label>
+  </div>
+  <div class="form-check">
+    {{ html()->radio('status')->value(4)->class(["form-check-input"])->id('status_4')->checked(old('status', $edit->status === 4)) }}
+    <label class="form-check-label" for="status_4">
+      Seminar KP 
+    </label>
+  </div>
+  <div class="form-check">
+    {{ html()->radio('status')->value(5)->class(["form-check-input"])->id('status_5')->checked(old('status', $edit->status === 5)) }}
+    <label class="form-check-label" for="status_5">
+      Selesai KP
+    </label>
+  </div>
+  <div class="form-check">
+    {{ html()->radio('status')->value(6)->class(["form-check-input"])->id('status_6')->checked(old('status', $edit->status === 6)) }}
+    <label class="form-check-label" for="status_6">
+      Batal/Gagal
+    </label>
+  </div>
+</div>
+
+<!-- Judul KP -->
+<div class="form-group">
+  <div class="form-label" for="title">Judul KP</div>
+  {{ html()->text('title')->value($edit->title)->class(["form-control", "is-invalid" => $errors->has('title')])->id('title')->placeholder('Judul KP') }}
+  @error('title')
+  <div class="invalid-feedback">{{ $errors->first('title') }}</div>
+  @enderror
 </div>
 
 <!-- Bidang KP Mahasiswa -->
@@ -54,14 +87,6 @@
   </div>
 </div>
 
-<!-- Nama Pekerjaan -->
-<div class="form-group">
-  <div class="form-label" for="title">Pekerjaan</div>
-  {{ html()->text('title')->value($edit->title)->class(["form-control", "is-invalid" => $errors->has('title')])->id('title')->placeholder('Pekerjaan') }}
-  @error('title')
-  <div class="invalid-feedback">{{ $errors->first('title') }}</div>
-  @enderror
-</div>
 
 <!-- Nama Pembimbing -->
 <div class="form-group">
