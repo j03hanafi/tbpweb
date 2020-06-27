@@ -98,9 +98,9 @@
   <div class="form-label">Ruang Seminar</div>
   @if(empty($detail->seminar_room_id))
   <div><p>Ruangan belum dipilih</p></div>
+</div>
   @else
   <div>{{ $detail->seminar_room_id }}</div>
-  @endif
 </div> 
 
 <!-- Informasi seminar -->
@@ -120,5 +120,5 @@
     </div>
   </div>
 
-
 </div>
+  @endif

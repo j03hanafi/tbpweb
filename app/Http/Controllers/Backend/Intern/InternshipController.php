@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend\Intern;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Internship;
+use App\Models\Lecturer;
+use App\Models\Room;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -87,8 +89,10 @@ class InternshipController extends Controller
     
         $internship_edits = Internship::where('id', $id)->get();
         $status_mahasiswa_kp = config('central.status_mahasiswa_kp');
+        $advisor = Lecturer::select('id', 'name')->get();
+        $room = Room::select('id', 'name')->get();
     
-        return view('klp07.interns.edit', compact('internship_edits', 'status_mahasiswa_kp'));
+        return view('klp07.interns.edit', compact('internship_edits', 'status_mahasiswa_kp', 'advisor', 'room'));
     }
     
     /**
@@ -107,15 +111,19 @@ class InternshipController extends Controller
     
         Internship::where('id', $id)->update($request->only(
             'status',
+            'title',
             'field',
             'start_at',
             'end_at',
-            'title',
+            'advisor_id',
             'field_advisor_name',
             'field_advisor_no',
             'field_advisor_phone',
             'field_advisor_email',
-            'grade'
+            'grade',
+            'seminar_room_id',
+            'seminar_date',
+            'seminar_time'
         ));
     
         // update file_report_receipt

@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
           <div class="card">
 
             {{ html()->modelForm($edit, 'PUT', route('backend.interns.update', $edit->id))->acceptsFiles()->open() }}
@@ -32,6 +32,24 @@
             <div class="card-body">
               @include('klp07.interns._form')
             </div>
+          </div>
+        </div>
+
+              <!-- Upload File -->
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-header">
+                  <strong><i class="cil-pencil"></i> Upload File KP</strong>
+                </div>
+
+                <div class="card-body">
+                  @include('klp07.interns._upload')
+                </div>
+              </div>
+            </div>
+
+        <div class="col-md-9">   
+          <div class="card">
 
             <div class="card-footer">
               <input type="submit" class="btn btn-primary" value="Simpan"/>

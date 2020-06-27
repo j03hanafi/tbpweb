@@ -74,38 +74,65 @@
   <div class="row">
     <div class="col-md-6">
 
-      <div class="form-label" for="start_at">Tanggal Mulai</div>
-      {{ html()->date('start_at')->value($edit->start_at)->id('start_at') }}
-
-    </div>
-    <div class="col-md-6">
-
-      <div class="form-label" for="end_at">Tanggal Selesai</div>
-      {{ html()->date('end_at')->value($edit->end_at)->id('end_at') }}
-
-    </div>
-  </div>
-</div>
-
-
-<!-- Nama Pembimbing -->
-<div class="form-group">
-  <div class="row">
-    <div class="col-md-6">
-
-      <div class="form-label" for="field_advisor_name">Nama Pembimbing</div>
-      {{ html()->text('advisor_name')->value($edit->field_advisor_name)->class(["form-control", "is-invalid" => $errors->has('advisor_name')])->id('advisor_name')->placeholder('Nama Pembimbing') }}
-      @error('advisor_name')
-      <div class="invalid-feedback">{{ $errors->first('advisor_name') }}</div>
+      <label class="form-label" for="start_at">Tanggal Mulai</label>
+      {{ html()->date('start_at')->class(["form-control", "is-invalid" => $errors->has('start_at')])->id('start_at')->value($edit->start_at) }}
+      @error('start_at')
+      <div class="invalid-feedback">{{ $errors->first('start_at') }}</div>
       @enderror
 
     </div>
     <div class="col-md-6">
 
-      <div class="form-label" for="field_advisor_no">No Pembimbing</div>
-      {{ html()->text('advisor_no')->value($edit->field_advisor_no)->class(["form-control", "is-invalid" => $errors->has('advisor_no')])->id('advisor_no')->placeholder('No Pembimbing') }}
-      @error('advisor_no')
-      <div class="invalid-feedback">{{ $errors->first('advisor_no') }}</div>
+      <label class="form-label" for="end_at">Tanggal Selesai</label>
+      {{ html()->date('end_at')->class(["form-control", "is-invalid" => $errors->has('end_at')])->id('end_at')->value($edit->end_at) }}
+      @error('end_at')
+      <div class="invalid-feedback">{{ $errors->first('end_at') }}</div>
+      @enderror
+
+    </div>
+  </div>
+</div>
+
+<!-- Pembimbing -->
+<div class="form-group">
+
+  <div class="form-label" for="advisor_id">Pembimbing</div>
+
+  <select class="form-control" name="advisor_id" id="advisor_id">
+
+  @foreach($advisor as $advisor)
+    @if($edit->advisor_id != $advisor->id)
+    <option value="{{ $advisor->id }}">{{ $advisor->name}}</option>
+    @else
+    <option value="{{ $advisor->id }}" selected="selected">{{ $advisor->name}}</option>
+    @endif
+  @endforeach
+  </select> 
+
+  @if ($errors->any())
+  <div class="invalid-feedback"> sudah terdaftar sebagai pembimbing</div>
+  @endif
+
+</div>
+
+<!-- Nama Pembimbing Lapangan -->
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="form-label" for="field_advisor_name">Nama Pembimbing Lapangan</div>
+      {{ html()->text('field_advisor_name')->value($edit->field_advisor_name)->class(["form-control", "is-invalid" => $errors->has('field_advisor_name')])->id('field_advisor_name')->placeholder('Nama Pembimbing Lapangan') }}
+      @error('field_advisor_name')
+      <div class="invalid-feedback">{{ $errors->first('field_advisor_name') }}</div>
+      @enderror
+
+    </div>
+    <div class="col-md-6">
+
+      <div class="form-label" for="field_advisor_no">No Pembimbing Lapangan</div>
+      {{ html()->text('field_advisor_no')->value($edit->field_field_advisor_no)->class(["form-control", "is-invalid" => $errors->has('field_advisor_no')])->id('field_advisor_no')->placeholder('No Pembimbing Lapangan') }}
+      @error('field_advisor_no')
+      <div class="invalid-feedback">{{ $errors->first('field_advisor_no') }}</div>
       @enderror
 
     </div>
@@ -117,19 +144,19 @@
   <div class="row">
     <div class="col-md-6">
 
-      <div class="form-label" for="field_advisor_phone">No HP Pembimbing</div>
-      {{ html()->text('advisor_phone')->value($edit->field_advisor_phone)->class(["form-control", "is-invalid" => $errors->has('advisor_phone')])->id('advisor_phone')->placeholder('No HP Pembimbing') }}
-      @error('advisor_phone')
-      <div class="invalid-feedback">{{ $errors->first('advisor_phone') }}</div>
+      <div class="form-label" for="field_advisor_phone">No HP Pembimbing Lapangan</div>
+      {{ html()->text('field_advisor_phone')->value($edit->field_advisor_phone)->class(["form-control", "is-invalid" => $errors->has('field_advisor_phone')])->id('field_advisor_phone')->placeholder('No HP Pembimbing Lapangan') }}
+      @error('field_advisor_phone')
+      <div class="invalid-feedback">{{ $errors->first('field_advisor_phone') }}</div>
       @enderror
 
     </div>
     <div class="col-md-6">
 
-      <div class="form-label" for="field_advisor_email">Email Pembimbing</div>
-      {{ html()->text('advisor_email')->value($edit->field_advisor_email)->class(["form-control", "is-invalid" => $errors->has('advisor_email')])->id('advisor_email')->placeholder('Email Pembimbing') }}
-      @error('advisor_email')
-      <div class="invalid-feedback">{{ $errors->first('advisor_email') }}</div>
+      <div class="form-label" for="field_advisor_email">Email Pembimbing Lapangan</div>
+      {{ html()->text('field_advisor_email')->value($edit->field_advisor_email)->class(["form-control", "is-invalid" => $errors->has('field_advisor_email')])->id('field_advisor_email')->placeholder('Email Pembimbing Lapangan') }}
+      @error('field_advisor_email')
+      <div class="invalid-feedback">{{ $errors->first('field_advisor_email') }}</div>
       @enderror
 
     </div>
@@ -145,128 +172,48 @@
   @enderror
 </div>
 
-<!-- files -->
+<!-- Ruang Seminar -->
 <div class="form-group">
-  <div class="row">
 
-    <div class="col-md-4">
+  <div class="form-label" for="seminar_room_id">Ruang Seminar</div>
 
-      <div class="form-label" for="file_report_receipt">File Report Receipt</div>
+  <select class="form-control" name="seminar_room_id" id="seminar_room_id">
 
-    </div>
+  @foreach($room as $room)
+    @if($edit->seminar_room_id != $room->id)
+    <option value="{{ $room->id }}">{{ $room->name}}</option>
+    @else
+    <option value="{{ $room->id }}" selected="selected">{{ $room->name}}</option>
+    @endif
+  @endforeach
+  </select> 
 
-    <div class="col-md-4">
-
-      <div class="form-label" for="file_field_grade">File Field Grade</div>
-
-    </div>
-
-    <div class="col-md-4">
-
-      <div class="form-label" for="file_logbook">File Logbook</div>
-
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-4">
-
-      {{ html()->file('file_report_receipt')->class(["form-control-file", "is-invalid" => $errors->has('file_report_receipt')])->id('file_report_receipt') }}
-      @error('file_report_receipt')
-      <div class="invalid-feedback">{{ $errors->first('file_report_receipt') }}</div>
-      @enderror
-
-    </div>
-
-    <div class="col-md-4">
-
-      {{ html()->file('file_field_grade')->class(["form-control-file", "is-invalid" => $errors->has('file_field_grade')])->id('file_field_grade') }}
-      @error('file_field_grade')
-      <div class="invalid-feedback">{{ $errors->first('file_field_grade') }}</div>
-      @enderror
-
-    </div>
-
-    <div class="col-md-4">
-
-      {{ html()->file('file_logbook')->class(["form-control-file", "is-invalid" => $errors->has('file_logbook')])->id('file_logbook') }}
-      @error('file_logbook')
-      <div class="invalid-feedback">{{ $errors->first('file_logbook') }}</div>
-      @enderror
-
-    </div>
-
-  </div>
+  @if ($errors->any())
+  <div class="invalid-feedback"> sudah terdaftar sebagai pembimbing</div>
+  @endif
 
 </div>
 
+<!-- Informasi Seminar -->
 <div class="form-group">
-
   <div class="row">
+    <div class="col-md-6">
 
-    <div class="col-md-4">
-
-      <div class="form-label" for="file_seminar_attendance">File Seminar Attendance</div>
-
-    </div>
-
-    <div class="col-md-4">
-
-      <div class="form-label" for="file_seminar_off_report">File Seminar Off Report</div>
-
-    </div>
-
-    <div class="col-md-4">
-
-      <div class="form-label" for="file_certificate">File Certificate</div>
-
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-4">
-
-      {{ html()->file('file_seminar_attendance')->class(["form-control-file", "is-invalid" => $errors->has('file_seminar_attendance')])->id('file_seminar_attendance') }}
-      @error('file_seminar_attendance')
-      <div class="invalid-feedback">{{ $errors->first('file_seminar_attendance') }}</div>
+      <label class="form-label" for="seminar_date">Tanggal Seminar</label>
+      {{ html()->date('seminar_date')->class(["form-control", "is-invalid" => $errors->has('seminar_date')])->id('seminar_date')->value($edit->seminar_date) }}
+      @error('seminar_date')
+      <div class="invalid-feedback">{{ $errors->first('seminar_date') }}</div>
       @enderror
 
     </div>
+    <div class="col-md-6">
 
-    <div class="col-md-4">
-
-      {{ html()->file('file_seminar_off_report')->class(["form-control-file", "is-invalid" => $errors->has('file_seminar_off_report')])->id('file_seminar_off_report') }}
-      @error('file_seminar_off_report')
-      <div class="invalid-feedback">{{ $errors->first('file_seminar_off_report') }}</div>
-      @enderror
-
-    </div>
-
-    <div class="col-md-4">
-
-      {{ html()->file('file_certificate')->class(["form-control-file", "is-invalid" => $errors->has('file_certificate')])->id('file_certificate') }}
-      @error('file_certificate')
-      <div class="invalid-feedback">{{ $errors->first('file_certificate') }}</div>
+      <label class="form-label" for="seminar_time">Waktu Seminar</label>
+      {{ html()->time('seminar_time')->class(["form-control", "is-invalid" => $errors->has('seminar_time')])->id('seminar_time')->value($edit->seminar_time) }}
+      @error('seminar_time')
+      <div class="invalid-feedback">{{ $errors->first('seminar_time') }}</div>
       @enderror
 
     </div>
   </div>
 </div>
-
-<!-- Tanggal Buat dan Upload -->
-<!-- <div class="form-group">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-label" for="created_at">Dibuat pada tanggal</div>
-      //{{ html()->date('created_at')->value($edit->created_at)->id('created_at') }}
-    </div>
-    <div class="col-md-6">
-    
-      <div class="form-label" for="updated_at">Diupload pada tanggal</div>
-      //{{ html()->date('updated_at')->value($edit->updated_at)->id('updated_at') }}
-    </div>
-  </div>
-</div> -->
