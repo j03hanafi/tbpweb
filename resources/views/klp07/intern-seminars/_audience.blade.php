@@ -2,16 +2,16 @@
 
     <thead class="{{ config('style.thead') }}">
       <tr>
+        <th class="text-center">No</th>
         <th class="text-center">Nama</th>
-        <th class="text-center">NIM</th>
       </tr>
     </thead>
 
     <tbody>
-      @forelse($internship_audiences as $audience)
+      @forelse($internship_audiences as $no => $audience)
       <tr>
-        <td class="text-center">{{ $audience->student->name }}</td>
-        <td class="text-center">{{ $audience->student->nim }}</td>
+        <td class="text-center">{{ $no+1 }}</td>
+        <td><b>{{ $audience->student->name }}</b></td>
       </tr>
 
       @empty

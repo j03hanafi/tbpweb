@@ -12,35 +12,40 @@
 
 <!-- Tanggal Seminar -->
 <div class="form-group">
-  <div class="form-label" for="seminar_date">Tanggal Seminar</div>
-  {{ html()->date('seminar_date')->value($edit->seminar_date)->id('seminar_date') }}
+  <label class="form-label" for="seminar_date">Tanggal Seminar</label>
+  {{ html()->date('seminar_date')->class(["form-control", "is-invalid" => $errors->has('seminar_date')])->id('seminar_date')->value($edit->seminar_date) }}
+  @error('seminar_date')
+  <div class="invalid-feedback">{{ $errors->first('seminar_date') }}</div>
+  @enderror
 </div>
 
 <!-- Waktu Seminar -->
 <div class="form-group">
-  <div class="form-label" for="seminar_time">Waktu Seminar</div>
-  {{ html()->time('seminar_time')->value($edit->seminar_time)->id('seminar_time') }}
+  <label class="form-label" for="seminar_time">Waktu Seminar</label>
+  {{ html()->time('seminar_time')->class(["form-control", "is-invalid" => $errors->has('seminar_time')])->id('seminar_time')->value($edit->seminar_time) }}
+  @error('seminar_time')
+  <div class="invalid-feedback">{{ $errors->first('seminar_time') }}</div>
+  @enderror
 </div>
 
 <!-- Ruang Seminar -->
 <div class="form-group">
-  <div class="form-label" for="seminar_room">Ruang Seminar</div>
-  {{ html()->text('seminar_room')->value($edit->room->name)->class(["form-control", "is-invalid" => $errors->has('seminar_room')])->id('seminar_room')->placeholder('Ruang Seminar') }}
-  @error('seminar_room')
-  <div class="invalid-feedback">{{ $errors->first('seminar_room') }}</div>
-  @enderror
-</div>
 
-<!-- Gedung Seminar -->
-<div class="form-group">
-  <div class="form-label" for="seminar_building">Gedung Seminar</div>
-  {{ html()->text('seminar_building')->value($edit->room->building->name)->class(["form-control", "is-invalid" => $errors->has('seminar_building')])->id('seminar_building')->placeholder('Gedung Seminar') }}
-  @error('seminar_building')
-  <div class="invalid-feedback">{{ $errors->first('seminar_building') }}</div>
-  @enderror
-</div>
+  <div class="form-label" for="seminar_room_id">Ruang Seminar</div>
 
-<!-- seminar_room_id -->
-<div class="form-group">
-  {{ html()->hidden('seminar_room_id')->value($edit->seminar_room_id)->class('seminar_room_id')->id('seminar_room_id') }}
+  <select class="form-control" name="seminar_room_id" id="seminar_room_id">
+
+  @foreach($room as $room)
+    @if($edit->seminar_room_id != $room->id)
+    <option value="{{ $room->id }}">{{ $room->name}}</option>
+    @else
+    <option value="{{ $room->id }}" selected="selected">{{ $room->name}}</option>
+    @endif
+  @endforeach
+  </select> 
+
+  @if ($errors->any())
+  <div class="invalid-feedback"> sudah dipilih sebagai ruang seminar</div>
+  @endif
+
 </div>

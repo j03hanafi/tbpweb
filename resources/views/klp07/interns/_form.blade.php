@@ -189,7 +189,7 @@
   </select> 
 
   @if ($errors->any())
-  <div class="invalid-feedback"> sudah terdaftar sebagai pembimbing</div>
+  <div class="invalid-feedback"> sudah dipilih sebagai ruang seminar</div>
   @endif
 
 </div>

@@ -50,7 +50,7 @@ class InternshipSeminarController extends Controller
     public function show($id)
     {
         $internship_details = Internship::where('id', $id)->get();
-        $internship_audiences = InternshipAudience::where('internship_id', $id)->paginate(10);
+        $internship_audiences = InternshipAudience::where('internship_id', $id)->paginate(5);
 
         return view('klp07.intern-seminars.show', compact('internship_details', 'internship_audiences'));
     }
@@ -64,8 +64,9 @@ class InternshipSeminarController extends Controller
     public function edit($id)
     {
         $internship_edits = Internship::where('id', $id)->get();
+        $room = Room::select('id', 'name')->get();
 
-        return view('klp07.intern-seminars.edit', compact('internship_edits'));
+        return view('klp07.intern-seminars.edit', compact('internship_edits', 'room'));
     }
 
     /**
@@ -80,23 +81,10 @@ class InternshipSeminarController extends Controller
         
         $this->validate($request, Internship::$validation_seminar);
 
-        $internship = Internship::find($id);
-
-        $internship->room()->update([
-            'name' => $request->seminar_room
-        ]);
-
-        $room = Room::find($request->seminar_room_id);
-
-        $room->building()->update([
-            'name' => $request->seminar_building
-        ]);
-
-        $internship_updates = Internship::where('id', $id)->get();
-
         Internship::where('id', $id)->update($request->only(
             'seminar_date',
-            'seminar_time'
+            'seminar_time',
+            'seminar_room_id'
         ));
 
         notify('success', 'Berhasil memperbaharui data');

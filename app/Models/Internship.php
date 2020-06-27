@@ -17,8 +17,6 @@ class Internship extends Model
     ];
 
     static $validation_seminar = [
-        'seminar_room' => 'required',
-        'seminar_building' => 'required',
         'seminar_room_id' => 'required'
     ];
 

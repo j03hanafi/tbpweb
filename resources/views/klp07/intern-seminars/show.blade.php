@@ -20,7 +20,7 @@
 <div class="row justify-content-center">
   <div class="col">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-9">
         <div class="card">
 
           {{-- CARD HEADER--}}
@@ -30,21 +30,26 @@
 
           {{-- CARD BODY--}}
           <div class="card-body">
-            @include('klp07.intern-seminars._detail')
+            @if(empty($detail->seminar_room_id))
+              <h6>Ruangan Seminar belum dipilih</h6>
+              <a class="btn btn-outline-primary" href="{{ route('backend.intern-seminars.edit', $detail->id) }}#seminar_room_id" role="button">Pilih Disini</a>
+            @else
+              @include('klp07.intern-seminars._detail')
+            @endif
           </div>
 
           {{--CARD FOOTER--}}
           <div class="card-footer"></div>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-3">
         <div class="card">
           {{-- CARD HEADER--}}
           <div class="card-header">
 
-            <strong><i class="cil-people"></i> Daftar Audiens</strong>
+            <strong><i class="cil-people"></i> Audiens</strong>
             <div class="float-right">
-              {!! cui()->toolbar_btn(route('backend.intern-seminars.audiences.create', $detail->id),  'cil-library-add', 'Tambah Audiens') !!}
+              {!! cui()->toolbar_btn(route('backend.intern-seminars.audiences.create', $detail->id),  'cil-library-add', 'Add') !!}
             </div>
 
           </div>
