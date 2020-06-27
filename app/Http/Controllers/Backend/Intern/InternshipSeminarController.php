@@ -51,8 +51,9 @@ class InternshipSeminarController extends Controller
     {
         $internship_details = Internship::where('id', $id)->get();
         $internship_audiences = InternshipAudience::where('internship_id', $id)->paginate(5);
+        $status_mahasiswa_kp = config('central.status_mahasiswa_kp');
 
-        return view('klp07.intern-seminars.show', compact('internship_details', 'internship_audiences'));
+        return view('klp07.intern-seminars.show', compact('internship_details', 'internship_audiences', 'status_mahasiswa_kp'));
     }
 
     /**
